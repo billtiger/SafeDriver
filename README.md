@@ -101,7 +101,7 @@ git clone https://github.com/tensorflow/tensorflow
   --input_names=Mul \  
   --output_names=final_result  
   ```
-9. 用优化后的模型测试图片(可选),图片地址需要修改
+9. 用优化后的模型测试图片(可选,图片地址需要修改）
 ```
 bazel-bin/tensorflow/examples/label_image/label_image \  
 --input_layer=Mul \
@@ -123,9 +123,9 @@ private static final String LABEL_FILE = "file:///android_asset/retrained_labels
 ```
 - 并把上述两个文件移(optimized_graph.pb 和 retrained_labels.txt)动到 /tensorflow/tensorflow/examples/android/assets 目录下
 11. 修改部分功能
-- 增加切换摄像头功能
+- 增加切换摄像头功能  
   在LegacyCameraConnectionFragment.java文件中的onViewCreated方法中添加按钮响应,具体可参考[Android Camera2 API switch back - front cameras](https://stackoverflow.com/questions/39022845/android-camera2-api-switch-back-front-cameras)
-- 结果去掉百分比
+- 结果去掉百分比  
   在RecognitionScoreView.java文件中的onDraw方法中自己设定输出就可以了。
 12. 部署模型到安卓手机
 - 重新编译Android 环境
