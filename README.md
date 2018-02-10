@@ -1,3 +1,4 @@
+![](https://github.com/junkfei/SafeDriver/blob/master/res/drawable-xxhdpi/safedriver.png)
 # SafeDriver (师傅小心)
 - SafeDriver (师傅小心)是基于[Tensorflow Lite](https://www.tensorflow.org/mobile/tflite/)框架,在 Android 上的一次尝试性实验。
 - 本实验参考Google官方Github文档[tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android)
@@ -73,7 +74,7 @@ git clone https://github.com/tensorflow/tensorflow
   bazel build tensorflow/examples/image_retraining:retrain 
   ```
 - 训练自己的模型  
-  在tensorflow根目录下新建model目录 (存放训练后的模型) 和retrain_logs目录 (记录训练过程,以便于用tensorboard可视化) ,接着输入如下命令: (第一行最后还有2个空格，别漏了)
+  在tensorflow根目录下新建model目录 (存放训练后的模型) 和retrain_logs目录 (记录训练过程,以便于用tensorboard可视化) ,接着输入如下命令: (第一行最后还有2个空格，别漏了)
   ```
   bazel-bin/tensorflow/examples/image_retraining/retrain\  
   --bottleneck_dir=./model/bottlenecks \  
@@ -124,9 +125,9 @@ private static final String LABEL_FILE = "file:///android_asset/retrained_labels
 - 并把上述两个文件移(optimized_graph.pb 和 retrained_labels.txt)动到 /tensorflow/tensorflow/examples/android/assets 目录下
 11. 修改部分功能
 - 增加切换摄像头功能  
-  在LegacyCameraConnectionFragment.java文件中的onViewCreated方法中添加按钮响应,具体可参考[Android Camera2 API switch back - front cameras](https://stackoverflow.com/questions/39022845/android-camera2-api-switch-back-front-cameras)
+  在LegacyCameraConnectionFragment.java文件中的onViewCreated方法中添加按钮响应,具体可参考[Android Camera2 API switch back - front cameras](https://stackoverflow.com/questions/39022845/android-camera2-api-switch-back-front-cameras)
 - 结果去掉百分比  
-  在RecognitionScoreView.java文件中的onDraw方法中自己设定输出就可以了。
+  在RecognitionScoreView.java文件中的onDraw方法中自己设定输出就可以了。
 12. 部署模型到安卓手机
 - 重新编译Android 环境
   根目录输入:`bazel build -c opt //tensorflow/examples/android:tensorflow_demo`
