@@ -70,7 +70,7 @@ android_binary(
     # (and corresponding Activities in source) to reduce APK size.
     assets = [
         "//tensorflow/examples/android/assets:asset_files",
-        ":external_assets",
+        # ":external_assets",
     ],
     assets_dir = "",
     custom_package = "org.tensorflow.demo",
