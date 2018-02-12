@@ -111,7 +111,7 @@ bazel-bin/tensorflow/examples/label_image/label_image \
 --image=./XXX.jpg \  
 --graph=./model/optimized_graph.pb 
 ```
-10. 修改相关的java文件, /tensorflow/tensorflow/examples/android/src/org/tensorflow/demo 目录下的ClassifierActivity.java文件(文件里注释中写的有修改方式)
+10. 修改相关的java文件,`/tensorflow/tensorflow/examples/android/src/org/tensorflow/demo`目录下的`ClassifierActivity.java`文件(文件里注释中写的有修改方式)
 ```
 private static final int INPUT_SIZE = 299;
 private static final int IMAGE_MEAN = 128;
@@ -122,13 +122,16 @@ private static final String OUTPUT_NAME = "final_result";
 private static final String MODEL_FILE = "file:///android_asset/optimized_graph.pb";
 private static final String LABEL_FILE = "file:///android_asset/retrained_labels.txt";
 ```
-- 并把上述两个文件移(optimized_graph.pb 和 retrained_labels.txt)动到 /tensorflow/tensorflow/examples/android/assets 目录下
-11. 修改部分功能
+- 并把上述两个文件移(optimized_graph.pb 和 retrained_labels.txt)动到`/tensorflow/tensorflow/examples/android/assets`目录下
+11. 注释BUILD中需要编译的模型
+- 下载的模型链接随着tensorflow android 项目版本的更新可能会有变动，具体版本对应的链接请参考tensorflow根目录下的WORKSPACE文件，它其中标明了当前项目版本对应的模型下载链接。 
+- 在BUILD文中找到以`android_binary`开头的那段代码片，将`":external_assets",`用#号注释掉。这样就不会加载不需要的模型，减小APK的体积。否则可能还会报`missing input file '//tensorflow/examples/android:external_assets'`的错误。
+12. 修改部分功能
 - 增加切换摄像头功能  
-  在LegacyCameraConnectionFragment.java文件中的onViewCreated方法中添加按钮响应,具体可参考[Android Camera2 API switch back - front cameras](https://stackoverflow.com/questions/39022845/android-camera2-api-switch-back-front-cameras)
+  在`LegacyCameraConnectionFragment.java`文件中的`onViewCreated`方法中添加按钮响应,具体可参考[Android Camera2 API switch back - front cameras](https://stackoverflow.com/questions/39022845/android-camera2-api-switch-back-front-cameras)
 - 结果去掉百分比  
-  在RecognitionScoreView.java文件中的onDraw方法中自己设定输出就可以了。
-12. 部署模型到安卓手机
+  在`RecognitionScoreView.java`文件中的`onDraw`方法中自己设定输出就可以了。
+13. 部署模型到安卓手机
 - 重新编译Android 环境
   根目录输入:`bazel build -c opt //tensorflow/examples/android:tensorflow_demo`
 - 把新的apk文件放到安卓手机上安装,最后运行,效果如下图  
