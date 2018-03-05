@@ -122,7 +122,7 @@ private static final String OUTPUT_NAME = "final_result";
 private static final String MODEL_FILE = "file:///android_asset/optimized_graph.pb";
 private static final String LABEL_FILE = "file:///android_asset/retrained_labels.txt";
 ```
-- 并把上述两个文件移(optimized_graph.pb 和 retrained_labels.txt)动到`/tensorflow/tensorflow/examples/android/assets`目录下
+- 并把上述两个文件(optimized_graph.pb 和 retrained_labels.txt)移动到`/tensorflow/tensorflow/examples/android/assets`目录下
 11. 注释BUILD中需要编译的模型
 - 下载的模型链接随着tensorflow android 项目版本的更新可能会有变动，具体版本对应的链接请参考tensorflow根目录下的WORKSPACE文件，它其中标明了当前项目版本对应的模型下载链接。 
 - 在BUILD文中找到以`android_binary`开头的那段代码片，将`":external_assets",`用#号注释掉。这样就不会加载不需要的模型，减小APK的体积。否则可能还会报`missing input file '//tensorflow/examples/android:external_assets'`的错误。
