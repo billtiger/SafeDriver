@@ -63,13 +63,13 @@ git clone https://github.com/tensorflow/tensorflow
   unzip /tmp/inception5h.zip -d tensorflow/examples/android/assets/
   unzip /tmp/mobile_multibox_v1.zip -d tensorflow/examples/android/assets/
   ```
-- 然后运行 `bazel build -c opt //tensorflow/examples/android:tensorflow_demo` (如果报错的话加入 -c opt --copt=-msse4)
+- 然后运行 `bazel build -c opt //tensorflow/examples/android:tensorflow_demo` (如果报错的话加入--copt=-msse4)
 - 此时在tensorflow代码根目录/bazel-bin/tensorflow/examples/android下，会有tensorflow_demo.apk，此时可以把该文件移动到手机上安装。
 6. 准备自己的数据finetuning Inception模型
 - 我的数据集有3个类别, normal, talking, yawning三种。  
   <img width="80%" src="https://github.com/junkfei/img-folder/blob/master/SafeDriver/%E8%84%B8%E9%83%A8%E5%88%86%E7%B1%BB.png"/> 
 - 收集的方式是，先下载外国的驾驶视频，以每帧一张分成图片，人工分类为normal, talking, yawning三类。接着使用[MTCNN](https://github.com/kpzhang93/MTCNN_face_detection_alignment)把每张图的脸部识别并切割出来，保存成一张张新的脸部图片，最后放入三个不同的文件夹中。
-- Bazel 编译retrain模块
+- Bazel 编译retrain模块 (如果报错的话加入--copt=-msse4)
   ```
   bazel build tensorflow/examples/image_retraining:retrain 
   ```
