@@ -88,7 +88,7 @@ git clone https://github.com/tensorflow/tensorflow
   开始了训练过程(先创建bottlenecks,再开始训练4000次迭代,注意图片格式是jpeg,否则会报错)  
   训练完毕后会在model目录下有retrained_graph.pb (模型) 和 retrain_labels.txt (标签) 两个文件  
 7. 优化和测试模型
-- 必须要进行如下build操作, 在根目录依次输入如下Bazel命令: 
+- 必须要进行如下build操作, 在根目录依次输入如下Bazel命令 (如果报错的话加入--copt=-msse4): 
   ```
   bazel build tensorflow/python/tools:optimize_for_inference  
   bazel build tensorflow/examples/label_image:label_image  
